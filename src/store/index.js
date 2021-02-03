@@ -13,6 +13,8 @@ const configureStore = () => {
             window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
     )
     sagaMiddleware.run(rootSaga)
+    store.dispatch({ type: 'HELLO' }) //// watcher Saga: watches on HELLO actions and triggers worker saga
+    store.dispatch({ type: 'HELLO' })
     return store
 }
 
