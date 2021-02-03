@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { loadImages } from '../../actions'
 import './styles.css';
 
+import Stats from '../Stats'
+
 // const key = '5f96323678d05ff0c4eb264ef184556868e303b32a2db88ecbf15746e6f25e02';
 
 // class ImageGrid extends Component {
@@ -27,7 +29,7 @@ class ImageGrid extends Component {
         this.props.loadImages()
     }
     render() {
-        const { images, error, loadImages } = this.props;
+        const { images, error, loadImages, imageStats } = this.props;
         return (
             <div className="content">
                 <section className="grid">
@@ -38,6 +40,7 @@ class ImageGrid extends Component {
                                 image.height / image.width,
                             )}`}
                         >
+                            <Stats stats={imageStats[image.id]} />
                             <img
                                 src={image.urls.small}
                                 alt={image.user.username}
@@ -55,11 +58,12 @@ class ImageGrid extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { isLoading, images, error } = state
+    const { isLoading, images, error, imageStats } = state
     return {
         isLoading,
         images,
-        error
+        error,
+        imageStats
     }
 }
 

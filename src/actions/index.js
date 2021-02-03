@@ -16,18 +16,20 @@ export const setImagesError = (error) => ({
     error
 })
 
-export const loadStats = () => {
+export const loadStats = (id) => {
     return {
-        type: STATS.LOAD
+        type: STATS.LOAD,
+        id
     }
 }
 
-export const setStats = (stats) => ({
+export const setStats = (id, stats) => ({
     type: STATS.LOAD_SUCCESS,
-    stats
+    id,
+    downloads: stats
 })
 
-export const setStatsError = (error) => ({
+export const setImagesStatsError = (id) => ({
     type: STATS.LOAD_FAIL,
-    error
+    id
 })
