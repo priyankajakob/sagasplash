@@ -4,9 +4,9 @@ import { setImages, setImagesError } from '../actions'
 
 import { fetchImages } from '../api'
 
-const getPage = state => state.nextPage
+export const getPage = state => state.nextPage
 
-function* handleImagesLoad() {
+export function* handleImagesLoad() {
     try {
         const page = yield select(getPage) //selects nextpage from store state variable -- otherway would be to pass the nextpage from component during action dispatch as payload
         // console.log('page', page)
